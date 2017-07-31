@@ -7,8 +7,9 @@ from fpv_image_pb2 import *
 import string,cgi,time
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 
-WIDTH = 80 #100
-HEIGHT = 60 #75
+WIDTH = 200 #80 #100
+HEIGHT = 150 #60 #75
+QUALITY = 40
 
 cap = cv2.VideoCapture(0)
 
@@ -17,13 +18,14 @@ class MyHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         try:
             ret, frame = cap.read()
+            #frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             frame = cv2.resize(frame, (WIDTH, HEIGHT))
             #frame = cv2.resize(frame, (400, 300))
 
             # mirror
             frame = frame[:,::-1]
 
-            cv2.imwrite("image.jpg", frame)
+            cv2.imwrite("image.jpg", frame, [int(cv2.IMWRITE_JPEG_QUALITY), QUALITY])
 
 	    fimage = FpvImage()
 	    fimage.width = WIDTH
