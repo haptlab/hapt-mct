@@ -10,6 +10,7 @@
   }
 </script>
 
-<style>
-  /* CSS */
+<style lang="scss">
+  @import './assets/css/material.min.css';
+  @import 'globals';
 </style>

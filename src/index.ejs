@@ -12,6 +12,10 @@
   </head>
   <body>
     <div id="app"></div>
+
+    <!-- static js -->
+    <script src="static/js/material.min.js"></script>
+
     <!-- Set `__static` path to static files in production -->
     <script>
       if (process.env.NODE_ENV !== 'development') window.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
